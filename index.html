@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DUEL / KOI Studios</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="grain"></div>
+<header class="topbar"><a class="brand" href="#"><span class="brand-mark">K</span> KOI <span class="muted">/ STUDIOS</span></a><div class="status"><span class="pulse"></span> ONLINE ARENA <span class="divider">/</span> BUILD 01</div></header>
+<main>
+<section id="home" class="home">
+  <div class="eyebrow"><span class="line"></span> COMPETITIVE COMBAT · 1V1</div>
+  <h1>DUEL<span class="accent">.</span><br><span class="outline">NO MERCY.</span></h1>
+  <p class="lede">Dos jugadores. Una arena. Ninguna excusa.</p>
+  <div class="home-grid">
+    <div class="panel setup">
+      <label for="playerName">TU NOMBRE DE COMBATE</label>
+      <input id="playerName" maxlength="16" placeholder="Ej. KOI_PLAYER" value="">
+      <button id="createBtn" class="btn primary">CREAR ARENA <span>↗</span></button>
+      <div class="split"><span></span><small>O ENTRA A UN DUELO</small><span></span></div>
+      <div class="join-row"><input id="roomCode" maxlength="4" placeholder="CÓDIGO" autocomplete="off"><button id="joinBtn" class="btn secondary">UNIRSE</button></div>
+      <p id="homeError" class="error"></p>
+    </div>
+    <div class="panel info-panel">
+      <div class="info-head"><span class="tag">HOW TO PLAY</span><span class="tiny">01 — 04</span></div>
+      <div class="rule"><b>W A S D</b><span>Moverse por la arena</span></div>
+      <div class="rule"><b>MOUSE</b><span>Apuntar y disparar</span></div>
+      <div class="rule"><b>CLICK</b><span>Disparo · automático al mantener</span></div>
+      <div class="rule"><b>SPACE</b><span>Dash de evasión · cooldown 1.5 s</span></div>
+      <div class="note"><span class="note-dot"></span> BO3 · 90 SEGUNDOS POR RONDA · 25 DAÑO POR IMPACTO</div>
+    </div>
+  </div>
+  <div class="footer-line"><span>DESIGNED FOR RIVALRY</span><span>KOI STUDIOS © 2026</span></div>
+</section>
+
+<section id="waiting" class="waiting hidden">
+  <div class="eyebrow"><span class="line"></span> ARENA PREPARADA</div>
+  <h2>INVITA A TU<br><span class="accent">RIVAL.</span></h2>
+  <p>Comparte este código. El duelo comenzará cuando entre el segundo jugador.</p>
+  <div class="code-box"><span id="codeDisplay">----</span><button id="copyCode" title="Copiar código">COPIAR ↗</button></div>
+  <div class="waiting-players"><div class="slot active"><span class="slot-icon">01</span><span id="hostName">Tú</span><i>LISTO</i></div><div class="slot"><span class="slot-icon">02</span><span>Esperando rival…</span><i class="wait-dot">● ● ●</i></div></div>
+  <p id="waitMessage" class="muted">La conexión permanece activa mientras esta pestaña esté abierta.</p>
+  <button id="cancelBtn" class="btn secondary">VOLVER AL MENÚ</button>
+</section>
+
+<section id="game" class="game hidden">
+  <div class="game-top">
+    <div class="game-brand"><span class="brand-mark small">K</span><div><b>DUEL<span class="accent">.</span></b><small>RANKED ARENA</small></div></div>
+    <div class="scoreboard"><div class="score-side"><span id="p1Name">PLAYER 1</span><b id="p1Score">0</b></div><div class="versus">VS</div><div class="score-side right"><b id="p2Score">0</b><span id="p2Name">PLAYER 2</span></div></div>
+    <div class="round-time"><small>ROUND TIMER</small><b id="timer">01:30</b></div>
+  </div>
+  <div class="arena-wrap"><canvas id="arena" width="1200" height="760"></canvas><div class="arena-hint">WASD MOVE <span>·</span> MOUSE AIM <span>·</span> CLICK FIRE <span>·</span> SPACE DASH</div>
+    <div id="toast" class="toast hidden"></div>
+    <div id="overlay" class="overlay hidden"><div class="overlay-card"><span class="tag">ROUND COMPLETE</span><h2 id="overlayTitle">VICTORY.</h2><p id="overlayText">Buen duelo.</p><button id="nextBtn" class="btn primary">CONTINUAR <span>↗</span></button></div></div>
+  </div>
+  <div class="hud-bottom"><div class="health"><span class="health-label">TU INTEGRIDAD <b id="hpText">100%</b></span><div class="health-track"><div id="hpBar" class="health-fill"></div></div></div><div class="dash-status"><span class="dash-key">SPACE</span><span id="dashText">DASH DISPONIBLE</span></div><div class="connection"><span class="pulse"></span> CONECTADO</div></div>
+</section>
+</main>
+<script src="/socket.io/socket.io.js"></script><script src="/client.js"></script>
+</body></html>
